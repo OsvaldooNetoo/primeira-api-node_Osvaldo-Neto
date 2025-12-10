@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
   if (method === "POST" && url === "/usuarios") {
     let body = "";
 
-    // Junta os pedaços do body
+    // Junta os blocos de dados recebidos
     req.on("data", chunk => {
       body += chunk.toString();
     });
