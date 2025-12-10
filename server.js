@@ -1,6 +1,6 @@
 const http = require("http");
 
-// Armazena usuários em memória
+// Armazena em memória local os inputs dos usuários do método POST
 let usuarios = [];
 
 // Função para enviar resposta
@@ -9,7 +9,7 @@ function sendJSON(res, status, data) {
   res.end(JSON.stringify(data));
 }
 
-// Criação do servidor
+// função createServer utilizada pçara criar o servidor HTTP
 const server = http.createServer((req, res) => {
   const { method, url } = req;
 
@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
       body += chunk.toString();
     });
 
-    // Quando terminar de receber o body
+    // bloco utilizado quando todos os dados foram recebidos
     req.on("end", () => {
       try {
         const data = JSON.parse(body);
